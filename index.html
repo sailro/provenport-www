@@ -33,6 +33,24 @@
   </div>
 </div></header>
 
+<!-- INPUT / OUTPUT -->
+<section class="tint" id="io"><div class="wrap narrow">
+  <p class="kicker">What goes in, what comes out</p>
+  <h2>Hand us a binary. Get back source you own — with proof.</h2>
+  <div class="grid cols-2" style="margin-top:2rem">
+    <div class="card">
+      <p class="kicker" style="margin:0 0 .5rem">Input</p>
+      <h3>A compiled .NET Framework assembly</h3>
+      <p>One <strong>.NET 4.x</strong> binary — we've validated net&nbsp;4.5 through net&nbsp;4.8. No source code, no project files, no build scripts, no original author. The binary is all we need.</p>
+    </div>
+    <div class="card">
+      <p class="kicker" style="margin:0 0 .5rem">Output</p>
+      <h3>Modern, buildable C# — that you own</h3>
+      <p>Readable <strong>C# source that compiles on .NET&nbsp;10</strong>, for your team to keep and maintain — delivered with the evidence that it behaves identically to the binary it came from.</p>
+    </div>
+  </div>
+</div></section>
+
 <!-- PROBLEM -->
 <section id="problem"><div class="wrap narrow">
   <p class="kicker">The problem</p>
@@ -70,6 +88,17 @@
   </div>
 </div></section>
 
+<!-- WHERE AI FITS -->
+<section class="tint" id="ai"><div class="wrap narrow">
+  <p class="kicker">Where the AI fits</p>
+  <h2>AI-native — but the proof, not the AI, has the last word.</h2>
+  <p class="section-lede">Most differences between framework generations are well understood: a deterministic engine resolves the patterns we've seen before with changes known to preserve behavior. AI is held in reserve for the cases that engine can't cover — a genuinely novel divergence with no known fix.</p>
+  <div class="grid cols-2" style="margin-top:1.8rem">
+    <div class="card"><h3>What the AI is given</h3><p>A tightly scoped problem: the exact input that produced a difference, the two differing results, and the specific piece of code responsible — never "rewrite this library."</p></div>
+    <div class="card"><h3>What keeps it honest</h3><p>Every AI-proposed fix is recompiled and re-checked against the original binary. It is kept only if it makes the behavior match, and discarded otherwise. The AI proposes; the equivalence proof decides.</p></div>
+  </div>
+</div></section>
+
 <!-- WHY HARD -->
 <section class="tint" id="edge"><div class="wrap narrow">
   <p class="kicker">Why it's hard</p>
@@ -80,7 +109,18 @@
     <div class="card"><h3>Invisible runtime changes</h3><p>The modern runtime changed behaviors the compiler will never flag. We know where to look — and how to restore the original.</p></div>
     <div class="card"><h3>Evidence, not assurances</h3><p>Equivalence is established by measurement, producing an auditable result you can stand behind.</p></div>
   </div>
-  <p style="margin-top:1.4rem">Bridging that gap takes deep expertise in .NET internals paired with a system built to prove, not assume.</p>
+
+  <h3 style="margin-top:2.6rem;font-size:1.08rem">A few real cases — each invisible at build time</h3>
+  <div style="margin-top:1rem">
+    <div class="feat"><div class="tick">✓</div><div><p>A calculation that used to <strong>throw an error on overflow</strong> now silently returns infinity instead.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>A duration that <strong>rounded to whole milliseconds</strong> now keeps finer precision — quietly shifting results.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>The same text <strong>capitalizes and sorts differently</strong> depending on the language and the runtime underneath.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>Helper code the original compiler invented — which has <strong>no written form</strong> — must be reconstructed before the source will even rebuild.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>A library's translations, shipped as <strong>dozens of separate per-language files</strong>, have to be rebuilt so every locale still loads.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>A platform feature the binary relied on was <strong>moved or removed</strong>, and each call has to be rerouted to its modern replacement.</p></div></div>
+  </div>
+
+  <p style="margin-top:1.6rem">Bridging that gap takes deep expertise in .NET internals paired with a system built to prove, not assume.</p>
 </div></section>
 
 <!-- PROOF -->
@@ -90,26 +130,30 @@
   <p class="section-lede">For each library, ProvenPort modernizes the legacy binary, then runs the library's <em>own</em> test suite against the result. Independent, third-party evidence of equivalence.</p>
 
   <div class="stats" style="margin:2.2rem 0 1.6rem">
-    <div class="stat"><div class="n">6</div><div class="l">libraries validated</div></div>
-    <div class="stat"><div class="n">40k<span class="u">+</span></div><div class="l">tests run green</div></div>
+    <div class="stat"><div class="n">10</div><div class="l">libraries validated</div></div>
+    <div class="stat"><div class="n">44k<span class="u">+</span></div><div class="l">tests run green</div></div>
     <div class="stat"><div class="n">15k<span class="u">+</span></div><div class="l">in a single library</div></div>
     <div class="stat"><div class="n">100<span class="u">%</span></div><div class="l">of applicable cases</div></div>
   </div>
 
   <div class="table-wrap">
     <table>
-      <thead><tr><th>Library</th><th>Domain</th><th>Tests passing</th><th>Status</th></tr></thead>
+      <thead><tr><th>Library</th><th>Framework</th><th>Domain</th><th>Tests passing</th><th>Status</th></tr></thead>
       <tbody>
-        <tr><td><b>MathNet.Numerics</b></td><td>Numerical computing</td><td class="num">20,908 / 20,958</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>Humanizer</b></td><td>Text &amp; localization</td><td class="num">15,023 / 15,023</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>Markdig</b></td><td>Markdown parser</td><td class="num">3,795 / 3,796</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>CsvHelper</b></td><td>CSV parsing</td><td class="num">1,058 / 1,058</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>YamlDotNet</b></td><td>YAML serializer</td><td class="num">885 / 890</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>Fastenshtein</b></td><td>String distance</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>MathNet.Numerics</b></td><td class="num">net 4.8</td><td>Numerical computing</td><td class="num">20,908 / 20,958</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Humanizer</b></td><td class="num">net 4.8</td><td>Text &amp; localization</td><td class="num">15,023 / 15,023</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Markdig</b></td><td class="num">net 4.6.2</td><td>Markdown parser</td><td class="num">3,795 / 3,796</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Cronos</b></td><td class="num">net 4.5</td><td>Cron scheduling</td><td class="num">1,868 / 1,868</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>CsvHelper</b></td><td class="num">net 4.8</td><td>CSV parsing</td><td class="num">1,058 / 1,058</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>YamlDotNet</b></td><td class="num">net 4.7</td><td>YAML serializer</td><td class="num">885 / 890</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>CommandLineParser</b></td><td class="num">net 4.6.1</td><td>Command-line parsing</td><td class="num">684 / 684</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Stateless</b></td><td class="num">net 4.6.2</td><td>Workflow / state machines</td><td class="num">419 / 419</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>LiteDB</b></td><td class="num">net 4.5</td><td>Embedded database</td><td class="num">186 / 186</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Fastenshtein</b></td><td class="num">net 4.6.2</td><td>String distance</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
       </tbody>
     </table>
   </div>
-  <p class="muted" style="font-size:.88rem;margin-top:.7rem">Residual cases reflect behavior that only exists in newer target frameworks — absent from the original binary, and faithfully absent from the port.</p>
+  <p class="muted" style="font-size:.88rem;margin-top:.7rem">Counts are of the tests applicable to the original binary. The remainder exercise behavior that only exists in newer frameworks — features the legacy binary never had, and faithfully doesn't have after porting.</p>
 
   <div class="callout proven" style="margin-top:2rem">
     <div class="lbl">Detection in action</div>

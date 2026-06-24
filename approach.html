@@ -32,8 +32,10 @@
     <aside class="toc">
       <b>On this page</b>
       <a href="#principle">The golden-master principle</a>
+      <a href="#io">What we need, what you get</a>
       <a href="#hard">Why faithful porting is hard</a>
       <a href="#prove">How equivalence is proven</a>
+      <a href="#ai">Where the AI fits</a>
       <a href="#validation">Independent validation</a>
       <a href="#partner">Work with us</a>
     </aside>
@@ -46,6 +48,14 @@
       <div class="callout proven">
         <div class="lbl">In one line</div>
         <p class="mb0">We don't ask you to trust the modernized code. We measure it against the binary it replaces.</p>
+      </div>
+
+      <h2 id="io">What we need, what you get</h2>
+      <p>The starting point is deliberately minimal: a single compiled <strong>.NET Framework assembly</strong> — a .NET&nbsp;4.x binary. No source code, no project files, no build scripts, no original author to consult. We've validated binaries spanning net&nbsp;4.5 through net&nbsp;4.8.</p>
+      <p>What comes back is not just a DLL that runs — it's <strong>readable, modern C# source that compiles on .NET&nbsp;10</strong>, source your team owns and can maintain going forward, delivered together with the evidence that it behaves identically to the original binary.</p>
+      <div class="grid cols-2" style="margin:1.5rem 0">
+        <div class="card"><p class="kicker" style="margin:0 0 .4rem">Input</p><p class="mb0">A source-less .NET&nbsp;4.x binary — net&nbsp;4.5 through net&nbsp;4.8.</p></div>
+        <div class="card"><p class="kicker" style="margin:0 0 .4rem">Output</p><p class="mb0">Owned, buildable C# on .NET&nbsp;10 — and proof it matches.</p></div>
       </div>
 
       <h2 id="hard">Why faithful porting is hard</h2>
@@ -63,9 +73,17 @@
       <div class="feat"><div class="tick">✓</div><div><b>Reconcile and re-verify</b><p>Any divergence is resolved with a verified, behavior-preserving change, then re-checked. The loop repeats until the two builds agree completely.</p></div></div>
       <p>The outcome is a modern assembly accompanied by something a conversion tool can't offer: <strong>evidence</strong> that its behavior matches the original.</p>
 
+      <h2 id="ai">Where the AI fits</h2>
+      <p>ProvenPort is AI-native, but the AI's role is deliberately bounded. The large, well-understood share of the work — the differences between framework generations that recur and have known, safe resolutions — is handled by a deterministic engine. Those changes are applied by construction; they don't need a model, and they don't get one.</p>
+      <p>AI is reserved for the exception: a genuinely <strong>novel divergence</strong> that no known pattern explains. There, the model is handed a tightly scoped problem — the exact input that differed, the two differing results, and the specific code responsible — and asked to propose a corrected implementation of just that piece.</p>
+      <div class="callout proven">
+        <div class="lbl">The guardrail</div>
+        <p class="mb0">No AI proposal is trusted on faith. Each one is recompiled and re-measured against the original binary, and kept only if it makes the behavior match. The AI accelerates the search for a fix; the equivalence proof is what accepts or rejects it.</p>
+      </div>
+
       <h2 id="validation">Independent validation</h2>
       <p>Beyond our own measurements, ProvenPort earns trust the hardest possible way: it modernizes real open-source libraries from their legacy binaries, then runs each library's <strong>own test suite</strong> against the modernized result. A green run is independent, third-party evidence of equivalence.</p>
-      <p>Across a growing set of libraries — spanning numerical computing, parsing, serialization, CSV processing, and localized text across dozens of languages — tens of thousands of those tests pass, including one library with over fifteen thousand tests green. In one case, the process surfaced a genuine behavioral difference introduced by the modern runtime and restored the original behavior automatically: exactly the kind of silent change that makes unverified migration risky.</p>
+      <p>Across ten libraries and counting — spanning numerical computing, parsing, CSV and YAML serialization, localized text across dozens of languages, cron scheduling, command-line parsing, state machines, and an embedded database — more than forty thousand of those tests pass, including one library with over fifteen thousand tests green. Along the way the process has surfaced genuine behavioral differences introduced by the modern runtime and restored the original behavior automatically: exactly the kind of silent change that makes unverified migration risky.</p>
       <p class="center" style="margin-top:1.6rem"><a class="btn secondary" href="index.html#proof">See the validation results →</a></p>
 
       <h2 id="partner">Work with us</h2>

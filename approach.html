@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach — ProvenPort</title>
+<meta name="description" content="How ProvenPort modernizes source-less .NET binaries and proves the result behaves identically to the original — the golden-master principle, why faithful porting is hard, and how equivalence is proven.">
+<link rel="stylesheet" href="assets/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234f46e5'/><path d='M9 11l-3 5 3 5M23 11l3 5-3 5M13.5 22l5-12' stroke='white' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>">
+</head>
+<body>
+
+<nav class="nav"><div class="wrap nav-in">
+  <a class="brand" href="index.html">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#4f46e5"/><path d="M9 11l-3 5 3 5M23 11l3 5-3 5M13.5 22l5-12" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    ProvenPort
+  </a>
+  <div class="nav-links">
+    <a href="approach.html" class="hide-sm">Approach</a>
+    <a href="index.html#proof" class="hide-sm">Proof</a>
+    <a href="pitch.html">Pitch</a>
+    <a class="btn-sm" href="mailto:hello@provenport.ai">Get in touch</a>
+  </div>
+</div></nav>
+
+<div class="wrap" style="padding-top:3rem;padding-bottom:4rem">
+  <p class="kicker">Approach</p>
+  <h1 style="font-size:clamp(1.9rem,4.5vw,2.6rem);margin:.2rem 0 .6rem">Modernize the binary. Prove the&nbsp;behavior.</h1>
+  <p class="section-lede">A high-level look at how ProvenPort turns a source-less .NET binary into a modern build you can trust — and the evidence that comes with it.</p>
+
+  <div class="doc" style="margin-top:2.5rem">
+    <aside class="toc">
+      <b>On this page</b>
+      <a href="#principle">The golden-master principle</a>
+      <a href="#hard">Why faithful porting is hard</a>
+      <a href="#prove">How equivalence is proven</a>
+      <a href="#validation">Independent validation</a>
+      <a href="#partner">Work with us</a>
+    </aside>
+
+    <div class="doc-body">
+
+      <h2 id="principle">The golden-master principle</h2>
+      <p>ProvenPort starts from a simple, uncompromising idea: <strong>the original binary defines correct behavior.</strong> Not a specification, not the reconstructed source, not anyone's memory of what the code was supposed to do — the binary's actual, observable behavior is the single source of truth.</p>
+      <p>That reframes modernization from a creative task into a measurable one. The goal isn't to write code that looks right; it's to produce a modern build whose behavior is indistinguishable from the original — and to be able to <em>show</em> it.</p>
+      <div class="callout proven">
+        <div class="lbl">In one line</div>
+        <p class="mb0">We don't ask you to trust the modernized code. We measure it against the binary it replaces.</p>
+      </div>
+
+      <h2 id="hard">Why faithful porting is hard</h2>
+      <p>Getting a binary to run on modern .NET is the easy 80%. The dangerous 20% is making it behave <em>exactly</em> as before. Three forces work against a faithful port:</p>
+      <div class="feat"><div class="tick">✓</div><div><b>Reconstruction is lossy</b><p>Turning a compiled binary back into buildable code is imperfect. The result can look correct yet rebuild differently — or fail to rebuild at all — without expert intervention.</p></div></div>
+      <div class="feat"><div class="tick">✓</div><div><b>The platform shifted underneath</b><p>Capabilities a library once carried itself were later absorbed into the platform. Reconciling that overlap, faithfully, is subtle work.</p></div></div>
+      <div class="feat"><div class="tick">✓</div><div><b>The runtime changed silently</b><p>Moving to modern .NET quietly altered behavior in areas the compiler never warns about. A build that compiles cleanly can still produce different answers.</p></div></div>
+      <p>Each of these is a place where a naïve migration introduces silent regressions. ProvenPort is built to find them and resolve them with changes that preserve the original behavior by construction.</p>
+
+      <h2 id="prove">How equivalence is proven</h2>
+      <p>Proof, not assurance, is the product. The process is deliberately measured:</p>
+      <div class="feat"><div class="tick">✓</div><div><b>Establish the golden reference</b><p>The original binary's behavior is captured over a broad range of conditions — what it returns, how it fails, what it changes.</p></div></div>
+      <div class="feat"><div class="tick">✓</div><div><b>Reproduce on modern .NET</b><p>The modernized build is exercised under the identical conditions, so the comparison is genuinely like-for-like.</p></div></div>
+      <div class="feat"><div class="tick">✓</div><div><b>Compare precisely</b><p>Results are compared rigorously enough to catch differences that casual testing — or a human reviewer — would miss.</p></div></div>
+      <div class="feat"><div class="tick">✓</div><div><b>Reconcile and re-verify</b><p>Any divergence is resolved with a verified, behavior-preserving change, then re-checked. The loop repeats until the two builds agree completely.</p></div></div>
+      <p>The outcome is a modern assembly accompanied by something a conversion tool can't offer: <strong>evidence</strong> that its behavior matches the original.</p>
+
+      <h2 id="validation">Independent validation</h2>
+      <p>Beyond our own measurements, ProvenPort earns trust the hardest possible way: it modernizes real open-source libraries from their legacy binaries, then runs each library's <strong>own test suite</strong> against the modernized result. A green run is independent, third-party evidence of equivalence.</p>
+      <p>Across a growing set of libraries — spanning numerical computing, parsing, serialization, and text processing — tens of thousands of those tests pass. In one case, the process surfaced a genuine behavioral difference introduced by the modern runtime and restored the original behavior automatically: exactly the kind of silent change that makes unverified migration risky.</p>
+      <p class="center" style="margin-top:1.6rem"><a class="btn secondary" href="index.html#proof">See the validation results →</a></p>
+
+      <h2 id="partner">Work with us</h2>
+      <p>We're partnering with a small number of organizations that have source-less .NET Framework binaries on the critical path to modernization. If that's you, we'd like to talk.</p>
+      <p><a class="btn" href="mailto:hello@provenport.ai">Get in touch →</a> &nbsp; <a class="btn secondary" href="pitch.html">Read the pitch</a></p>
+
+    </div>
+  </div>
+</div>
+
+<footer><div class="wrap foot-in">
+  <div>
+    <a class="brand" href="index.html"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#4f46e5"/><path d="M9 11l-3 5 3 5M23 11l3 5-3 5M13.5 22l5-12" stroke="white" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>ProvenPort</a>
+    <p class="muted" style="margin:.6rem 0 0;font-size:.86rem">Resurrect the source. Prove the behavior.</p>
+  </div>
+  <div style="display:flex;gap:1.4rem">
+    <a href="index.html">Home</a>
+    <a href="pitch.html">Pitch</a>
+    <a href="mailto:hello@provenport.ai">Contact</a>
+  </div>
+</div></footer>
+
+</body>
+</html>

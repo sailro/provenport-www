@@ -41,7 +41,7 @@
     <div class="card">
       <p class="kicker" style="margin:0 0 .5rem">Input</p>
       <h3>A compiled .NET Framework assembly</h3>
-      <p>One <strong>.NET 4.x</strong> binary — we've validated net&nbsp;4.5 through net&nbsp;4.8. No source code, no project files, no build scripts, no original author. The binary is all we need.</p>
+      <p>One <strong>.NET 4.x</strong> binary — we've validated net&nbsp;4.0 through net&nbsp;4.8. No source code, no project files, no build scripts, no original author. The binary is all we need.</p>
     </div>
     <div class="card">
       <p class="kicker" style="margin:0 0 .5rem">Output</p>
@@ -88,6 +88,18 @@
   </div>
 </div></section>
 
+<!-- SAFE EXECUTION -->
+<section class="tint" id="safe"><div class="wrap narrow">
+  <p class="kicker">Run safely, by default</p>
+  <h2>We have to run your binary. We never run it on bare metal.</h2>
+  <p class="section-lede">Capturing a binary's true behavior means <em>executing</em> it — including code whose source nobody has read in years. ProvenPort runs every source-less assembly inside a hardened, disposable, network-isolated sandbox, so a binary that deletes files, spawns processes, or phones home can do no harm to anything that matters.</p>
+  <div class="grid cols-3" style="margin-top:1.8rem">
+    <div class="card"><h3>Isolated</h3><p>Every run executes in a throwaway, hypervisor-isolated container with no network and a read-only view of the assembly — destroyed the moment it finishes.</p></div>
+    <div class="card"><h3>Contained</h3><p>Whatever the code does stays inside the sandbox. The host, your network, and your data are never in reach.</p></div>
+    <div class="card"><h3>Observed</h3><p>We don't just block side effects — we record them. What the binary writes or changes is captured and compared, so even effects are held to the equivalence standard.</p></div>
+  </div>
+</div></section>
+
 <!-- WHERE AI FITS -->
 <section class="tint" id="ai"><div class="wrap narrow">
   <p class="kicker">Where the AI fits</p>
@@ -130,8 +142,8 @@
   <p class="section-lede">For each library, ProvenPort modernizes the legacy binary, then runs the library's <em>own</em> test suite against the result. Independent, third-party evidence of equivalence.</p>
 
   <div class="stats" style="margin:2.2rem 0 1.6rem">
-    <div class="stat"><div class="n">10</div><div class="l">libraries validated</div></div>
-    <div class="stat"><div class="n">44k<span class="u">+</span></div><div class="l">tests run green</div></div>
+    <div class="stat"><div class="n">26</div><div class="l">libraries validated</div></div>
+    <div class="stat"><div class="n">50k<span class="u">+</span></div><div class="l">tests run green</div></div>
     <div class="stat"><div class="n">15k<span class="u">+</span></div><div class="l">in a single library</div></div>
     <div class="stat"><div class="n">100<span class="u">%</span></div><div class="l">of applicable cases</div></div>
   </div>
@@ -144,12 +156,28 @@
         <tr><td><b>Humanizer</b></td><td class="num">net 4.8</td><td>Text &amp; localization</td><td class="num">15,023 / 15,023</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Markdig</b></td><td class="num">net 4.6.2</td><td>Markdown parser</td><td class="num">3,795 / 3,796</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Cronos</b></td><td class="num">net 4.5</td><td>Cron scheduling</td><td class="num">1,868 / 1,868</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>DotLiquid</b></td><td class="num">net 4.5</td><td>Liquid templating</td><td class="num">1,364 / 1,364</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>CsvHelper</b></td><td class="num">net 4.8</td><td>CSV parsing</td><td class="num">1,058 / 1,058</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Bogus</b></td><td class="num">net 4.0</td><td>Fake-data generation</td><td class="num">1,051 / 1,051</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>SmartFormat</b></td><td class="num">net 4.6.2</td><td>String templating</td><td class="num">1,021 / 1,021</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>YamlDotNet</b></td><td class="num">net 4.7</td><td>YAML serializer</td><td class="num">885 / 890</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>CommandLineParser</b></td><td class="num">net 4.6.1</td><td>Command-line parsing</td><td class="num">684 / 684</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>QRCoder</b></td><td class="num">net 4.0</td><td>QR-code generation</td><td class="num">642 / 642</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Flurl</b></td><td class="num">net 4.7.2</td><td>HTTP / URL building</td><td class="num">542 / 542</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Stateless</b></td><td class="num">net 4.6.2</td><td>Workflow / state machines</td><td class="num">419 / 419</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>LiteDB</b></td><td class="num">net 4.5</td><td>Embedded database</td><td class="num">186 / 186</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Dynamitey</b></td><td class="num">net 4.0</td><td>Dynamic / DLR invocation</td><td class="num">186 / 186</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>ObjectDumper</b></td><td class="num">net 4.8</td><td>Object-graph dump</td><td class="num">172 / 172</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>TimeZoneConverter</b></td><td class="num">net 4.6.2</td><td>Timezone conversion</td><td class="num">101 / 101</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Optional</b></td><td class="num">net 4.5</td><td>Functional option type</td><td class="num">69 / 69</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>FastMember</b></td><td class="num">net 4.6.1</td><td>Fast reflection</td><td class="num">38 / 38</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Otp.NET</b></td><td class="num">net 4.6.1</td><td>OTP / 2FA (TOTP/HOTP)</td><td class="num">37 / 37</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>FuzzySharp</b></td><td class="num">net 4.6.1</td><td>Fuzzy string matching</td><td class="num">37 / 37</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>NGettext</b></td><td class="num">net 4.6</td><td>gettext localization</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Fastenshtein</b></td><td class="num">net 4.6.2</td><td>String distance</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Pluralize.NET</b></td><td class="num">net 4.6</td><td>Pluralization</td><td class="num">19 / 19</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>OneOf</b></td><td class="num">net 4.5</td><td>Discriminated unions</td><td class="num">11 / 11</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>ValueOf</b></td><td class="num">net 4.8</td><td>Value objects</td><td class="num">8 / 8</td><td><span class="badge ok">validated</span></td></tr>
       </tbody>
     </table>
   </div>

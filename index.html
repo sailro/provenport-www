@@ -212,6 +212,11 @@
     <div class="lbl">Detection in action</div>
     <p class="mb0">In one validated library, the modernized build initially produced a different result for a specific input — a genuine behavioral difference introduced by the modern runtime, invisible at build time. ProvenPort <strong>surfaced it, pinpointed the cause, and restored the original behavior</strong>. Catching that class of silent change is the whole point: not just porting, but <em>knowing</em> the behavior is identical.</p>
   </div>
+
+  <div class="callout proven" style="margin-top:1.4rem">
+    <div class="lbl">Beyond the test suite</div>
+    <p class="mb0">A test suite only checks the inputs its authors thought to write down. ProvenPort verifies the <em>behavior</em> — probing each library across edge cases its own tests never reach, and comparing the original binary to the modernized build value for value. On a library with <strong>15,000+ passing tests</strong>, that independently surfaced behavioral changes the modern runtime introduced — how an exceptional numeric value becomes a whole number, how a hash code is derived — which those tests never exercised. The distance between <em>"the tests pass"</em> and <em>"we measured that it behaves identically"</em> is exactly the risk in a migration you can't afford to get wrong.</p>
+  </div>
 </div></section>
 
 <!-- AUTHOR -->

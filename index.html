@@ -130,6 +130,7 @@
     <div class="feat"><div class="tick">✓</div><div><p>Helper code the original compiler invented — which has <strong>no written form</strong> — must be reconstructed before the source will even rebuild.</p></div></div>
     <div class="feat"><div class="tick">✓</div><div><p>A library's translations, shipped as <strong>dozens of separate per-language files</strong>, have to be rebuilt so every locale still loads.</p></div></div>
     <div class="feat"><div class="tick">✓</div><div><p>A platform feature the binary relied on was <strong>moved or removed</strong>, and each call has to be rerouted to its modern replacement.</p></div></div>
+    <div class="feat"><div class="tick">✓</div><div><p>A money library's own tests seemed to fail by the dozen — until we proved the <strong>new runtime itself</strong> changed how currency symbols resolve, not the port, by running the original binary on the modern runtime and watching it diverge identically.</p></div></div>
   </div>
 
   <p style="margin-top:1.6rem">Bridging that gap takes deep expertise in .NET internals paired with a system built to prove, not assume.</p>
@@ -142,9 +143,9 @@
   <p class="section-lede">For each library, ProvenPort modernizes the legacy binary, then runs the library's <em>own</em> test suite against the result. Independent, third-party evidence of equivalence.</p>
 
   <div class="stats" style="margin:2.2rem 0 1.6rem">
-    <div class="stat"><div class="n">26</div><div class="l">libraries validated</div></div>
-    <div class="stat"><div class="n">50k<span class="u">+</span></div><div class="l">tests run green</div></div>
-    <div class="stat"><div class="n">15k<span class="u">+</span></div><div class="l">in a single library</div></div>
+    <div class="stat"><div class="n">50</div><div class="l">libraries validated</div></div>
+    <div class="stat"><div class="n">60k<span class="u">+</span></div><div class="l">tests run green</div></div>
+    <div class="stat"><div class="n">20k<span class="u">+</span></div><div class="l">in a single library</div></div>
     <div class="stat"><div class="n">100<span class="u">%</span></div><div class="l">of applicable cases</div></div>
   </div>
 
@@ -155,26 +156,50 @@
         <tr><td><b>MathNet.Numerics</b></td><td class="num">net 4.8</td><td>Numerical computing</td><td class="num">20,908 / 20,958</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Humanizer</b></td><td class="num">net 4.8</td><td>Text &amp; localization</td><td class="num">15,023 / 15,023</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Markdig</b></td><td class="num">net 4.6.2</td><td>Markdown parser</td><td class="num">3,795 / 3,796</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Polly</b></td><td class="num">net 4.6.1</td><td>Resilience (retry / breaker)</td><td class="num">1,895 / 1,895</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Cronos</b></td><td class="num">net 4.5</td><td>Cron scheduling</td><td class="num">1,868 / 1,868</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>DotLiquid</b></td><td class="num">net 4.5</td><td>Liquid templating</td><td class="num">1,364 / 1,364</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>SauceControl.Blake2Fast</b></td><td class="num">net 4.6</td><td>BLAKE2 hashing</td><td class="num">1,102 / 1,102</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>CsvHelper</b></td><td class="num">net 4.8</td><td>CSV parsing</td><td class="num">1,058 / 1,058</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Bogus</b></td><td class="num">net 4.0</td><td>Fake-data generation</td><td class="num">1,051 / 1,051</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>SmartFormat</b></td><td class="num">net 4.6.2</td><td>String templating</td><td class="num">1,021 / 1,021</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>TimeZoneNames</b></td><td class="num">net 4.6.2</td><td>Localized TZ names</td><td class="num">1,001 / 1,001</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>YamlDotNet</b></td><td class="num">net 4.7</td><td>YAML serializer</td><td class="num">885 / 890</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>FluentValidation</b></td><td class="num">net 4.6.1</td><td>Validation</td><td class="num">813 / 813</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>CommonMark</b></td><td class="num">net 4.5</td><td>Markdown (CommonMark)</td><td class="num">736 / 736</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>CommandLineParser</b></td><td class="num">net 4.6.1</td><td>Command-line parsing</td><td class="num">684 / 684</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>QRCoder</b></td><td class="num">net 4.0</td><td>QR-code generation</td><td class="num">642 / 642</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Semver</b></td><td class="num">net 4.5.2</td><td>Semantic versioning</td><td class="num">665 / 665</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>QRCoder</b></td><td class="num">net 4.0</td><td>QR-code generation</td><td class="num">644 / 644</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>MoonSharp.Interpreter</b></td><td class="num">net 4.5</td><td>Lua scripting</td><td class="num">638 / 638</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Colourful</b></td><td class="num">net 4.5</td><td>Color science</td><td class="num">579 / 579</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Serilog</b></td><td class="num">net 4.7</td><td>Structured logging</td><td class="num">578 / 578</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Flurl</b></td><td class="num">net 4.7.2</td><td>HTTP / URL building</td><td class="num">542 / 542</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>Stateless</b></td><td class="num">net 4.6.2</td><td>Workflow / state machines</td><td class="num">419 / 419</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Stateless</b></td><td class="num">net 4.6.2</td><td>Workflow / state machines</td><td class="num">424 / 424</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>NodaMoney</b></td><td class="num">net 4.5</td><td>Money / currency</td><td class="num">391 / 391</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>ICSharpCode.SharpZipLib</b></td><td class="num">net 4.5</td><td>Compression / archives</td><td class="num">339 / 339</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>KellermanSoftware.Compare-NET-Objects</b></td><td class="num">net 4.6</td><td>Object-graph comparison</td><td class="num">310 / 310</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>EmailValidation</b></td><td class="num">net 4.6.2</td><td>Email validation</td><td class="num">269 / 269</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>DiffPlex</b></td><td class="num">net 4.5</td><td>Text diffing</td><td class="num">248 / 248</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Ensure.That</b></td><td class="num">net 4.6.2</td><td>Guard clauses</td><td class="num">226 / 226</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>HtmlSanitizer</b></td><td class="num">net 4.6.2</td><td>HTML sanitization</td><td class="num">198 / 198</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>LiteDB</b></td><td class="num">net 4.5</td><td>Embedded database</td><td class="num">186 / 186</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Dynamitey</b></td><td class="num">net 4.0</td><td>Dynamic / DLR invocation</td><td class="num">186 / 186</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>ObjectDumper</b></td><td class="num">net 4.8</td><td>Object-graph dump</td><td class="num">172 / 172</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>zxcvbn-core</b></td><td class="num">net 4.6.1</td><td>Password-strength</td><td class="num">169 / 169</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Enums.NET</b></td><td class="num">net 4.6.1</td><td>Enum utilities</td><td class="num">111 / 111</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>DotNet.Glob</b></td><td class="num">net 4.5</td><td>Glob matching</td><td class="num">110 / 110</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>TimeZoneConverter</b></td><td class="num">net 4.6.2</td><td>Timezone conversion</td><td class="num">101 / 101</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>TinyMapper</b></td><td class="num">net 4.0</td><td>Object-to-object mapping</td><td class="num">81 / 81</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Scientist</b></td><td class="num">net 4.5.1</td><td>Refactoring experiments</td><td class="num">76 / 76</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Optional</b></td><td class="num">net 4.5</td><td>Functional option type</td><td class="num">69 / 69</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Cyotek.Drawing.BitmapFont</b></td><td class="num">net 4.8</td><td>Bitmap-font parsing</td><td class="num">39 / 39</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>FastMember</b></td><td class="num">net 4.6.1</td><td>Fast reflection</td><td class="num">38 / 38</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Otp.NET</b></td><td class="num">net 4.6.1</td><td>OTP / 2FA (TOTP/HOTP)</td><td class="num">37 / 37</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>FuzzySharp</b></td><td class="num">net 4.6.1</td><td>Fuzzy string matching</td><td class="num">37 / 37</td><td><span class="badge ok">validated</span></td></tr>
-        <tr><td><b>NGettext</b></td><td class="num">net 4.6</td><td>gettext localization</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>Hashids.net</b></td><td class="num">net 4.5</td><td>ID obfuscation</td><td class="num">33 / 33</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>NGettext</b></td><td class="num">net 4.6</td><td>gettext localization</td><td class="num">30 / 30</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Fastenshtein</b></td><td class="num">net 4.6.2</td><td>String distance</td><td class="num">28 / 28</td><td><span class="badge ok">validated</span></td></tr>
+        <tr><td><b>NeoSmart.Unicode</b></td><td class="num">net 4.6.1</td><td>Emoji / Unicode</td><td class="num">25 / 25</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>Pluralize.NET</b></td><td class="num">net 4.6</td><td>Pluralization</td><td class="num">19 / 19</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>OneOf</b></td><td class="num">net 4.5</td><td>Discriminated unions</td><td class="num">11 / 11</td><td><span class="badge ok">validated</span></td></tr>
         <tr><td><b>ValueOf</b></td><td class="num">net 4.8</td><td>Value objects</td><td class="num">8 / 8</td><td><span class="badge ok">validated</span></td></tr>
